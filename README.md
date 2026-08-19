@@ -1,107 +1,51 @@
-# 🌐 Umar Idris Abubakar | Personal Portfolio
+# Umar Portfolio | Umar Idris Abubakar
 
-Welcome to my portfolio website built for the **PLP July 2025 Hackathon Challenge**!  
-This project showcases my skills, education, achievements, and interests as a cybersecurity and software engineering enthusiast.
+> Official Cybersecurity & AI Software Engineering Portfolio of **Umar Idris Abubakar**, Founder & CEO of ApoxylTech Innovation Hub.
 
----
+![Umar Portfolio](assets/umar.jpg)
 
-## 📌 Table of Contents
-- [About Me](#about-me)
-- [Skills](#skills)
-- [Education](#education)
-- [Certifications](#certifications)
-- [Projects](#projects)
-- [Interests](#interests)
-- [Contact](#contact)
-- [Live Demo](#live-demo)
-- [How to Use](#how-to-use)
+## 🌟 Highlights & Resume Credentials
+
+- **CompTIA Security+ Certified (SY0-701)**
+- **Founder & CEO**, ApoxylTech Innovation Hub
+- **Cisco Ethical Hacker** & **Cisco Junior Cybersecurity Analyst**
+- **ISC2 Candidate** & **ITU Academy Certified**
+- **AI Software Engineer** (AI-Powered Student Admission System, KdexSmArt Facial Recognition Attendance, Student File Management)
+- **Power Learn Project Scholar**
 
 ---
 
-## 👨‍💻 About Me
+## 🛠️ Technology Stack
 
-I'm Umar Idris Abubakar, a cybersecurity instructor, ethical hacker, and software engineering student from Bauchi, Nigeria.  
-I lead **Cybersquad New Generation**, offering free tech training to beginners across Africa.
-
----
-
-## 💻 Skills
-
-- Python Programming  
-- Web Development  
-- Networking (Cisco, Packet Tracer)  
-- Linux OS & Command Line  
-- Ethical Hacking (Nmap, Metasploit, Wireshark)  
-- Firebase (Realtime DB & Authentication)  
-- OSINT & Threat Intelligence
+- **Frontend**: React 18, Vite, Lucide Icons
+- **Styling**: Tailwind CSS, Glassmorphic Cyber UI Design System
+- **Certifications Center**: Integrated PDF Document Viewer & Digital Verification Credential badges
+- **Deployment**: Single-Page Compiled Web App (`dist/` target)
 
 ---
 
-## 🎓 Education
+## 🚀 Local Development & Build
 
-- **Diploma in Computer Science** – Abubakar Tatari Ali Polytechnic (2023–2025)  
-- **Software Engineering** – Power Learn Project (PLP), 2025 Cohort  
-- **Internship** – Zee Tech Foundation  
-- **Cybersecurity Training** – Prof. Iya Abubakar CRC, Cisco Academy
+To run the portfolio locally:
 
-[📄 Download My CV](assets/Umar_CV.pdf)
+```bash
+npm install
+npm run dev
+```
 
----
+To compile the production build:
 
-## 📜 Certifications
+```bash
+npm run build
+```
 
-- Ethical Hacking – Cisco Networking Academy  
-- Cybersecurity Awareness – LinkedIn Learning  
-- AI Takeoff – Nigeria Learning Passport  
-
----
-
-## 📸 Project Gallery
-
-Smart Attendance System (Honora App): Uses facial recognition to mark student attendance.
-
-![Screenshot 1](assets/project1.png)
-![Screenshot 2](assets/project2.png)
-![Screenshot 3](assets/project3.png)
-![Screenshot 4](assets/project3.png)
-![Screenshot 5](assets/project3.png)
-## 💡 Interests
-
-Cybersecurity Education, Mobile Hacking, OSINT, Research, Ethical AI, Mentorship, Community Impact
+The output will be saved to the `dist/` directory, ready for deployment to GitHub Pages, Vercel, or Netlify.
 
 ---
 
-## 📬 Contact Me
+## 📬 Contact Information
 
-The site includes a functional contact form
-
----
-
-## 🔗 Live Demo
-
-**👉 Visit My Portfolio Site:**  
-[https://umarplp.github.io/plp-portfolio/](https://umarplp.github.io/plp-portfolio/)
-
----
-
-## 🛠️ How to Use This Project
-
-1. Open the portfolio using the link above.
-2. Start from the welcome page (index.html).
-3. Click “Enter” to view the main portfolio (home.html).
-4. Browse my skills, education, certifications, and projects.
-
----
-
-## ✅ Technologies Used
-
-- HTML5  
-- CSS3  
-- Markdown (for this README)  
-- GitHub Pages for deployment
-
----
-
-## 🙌 Acknowledgment
-
-Thanks to **PLP Academy**, my Deskie, and fellow learners for this great opportunity!
+- **Email**: [umaraidkundak@gmail.com](mailto:umaraidkundak@gmail.com)
+- **Phone**: +234 9112647372
+- **LinkedIn**: [linkedin.com/in/umar-idris-abubakar-b26a702b7](https://www.linkedin.com/in/umar-idris-abubakar-b26a702b7/)
+- **GitHub**: [github.com/umaridrisdev](https://github.com/umaridrisdev)
