@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Award, MapPin, Mail, Linkedin, Github, FileText, ArrowRight, Code2, Terminal } from 'lucide-react';
+import CartoonRobotAvatar from './CartoonRobotAvatar';
 import { resumeData } from '../data/resumeData';
 
 export default function HeroSection({ data }) {
@@ -94,6 +95,7 @@ export default function HeroSection({ data }) {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:scale-110 transition-all"
                 title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -104,6 +106,7 @@ export default function HeroSection({ data }) {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:scale-110 transition-all"
                 title="GitHub Profile"
+                aria-label="GitHub Profile"
               >
                 <Github className="w-5 h-5" />
               </a>
@@ -112,6 +115,7 @@ export default function HeroSection({ data }) {
                 href={`mailto:${personalInfo.email}`}
                 className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:scale-110 transition-all"
                 title="Send Email"
+                aria-label="Send Email"
               >
                 <Mail className="w-5 h-5" />
               </a>
@@ -119,8 +123,18 @@ export default function HeroSection({ data }) {
 
           </div>
 
-          {/* Right Column: Hero Profile Card */}
-          <div className="lg:col-span-5 flex justify-center">
+          {/* Right Column: Hero Profile Card with Live Animated Cartoon Robot Greeting */}
+          <div className="lg:col-span-5 flex justify-center relative">
+            
+            {/* Floating Live Cartoon Robot Welcome Pill */}
+            <div className="absolute -top-6 -left-6 z-20 hidden sm:flex items-center gap-2 p-2.5 rounded-2xl bg-slate-900/90 border border-cyan-500/40 shadow-2xl backdrop-blur-md animate-bounce">
+              <CartoonRobotAvatar size="small" emotion="happy" />
+              <div className="font-mono text-[10px]">
+                <p className="text-cyan-400 font-bold">👋 Welcome!</p>
+                <p className="text-slate-300">I'm Apoxyl AI Assistant</p>
+              </div>
+            </div>
+
             <div className="relative group w-full max-w-md">
               
               {/* Outer Cyber Glow Frame */}

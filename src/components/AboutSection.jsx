@@ -3,35 +3,18 @@ import {
   User, 
   Compass, 
   GraduationCap, 
-  ShieldCheck, 
   Users, 
   FolderGit2, 
   Cpu, 
-  Terminal, 
   Quote, 
   BookOpen, 
   Sparkles, 
   Rocket, 
-  HeartHandshake, 
   Lock, 
-  CheckCircle2, 
-  ArrowRight,
   Target
 } from 'lucide-react';
 
 export default function AboutSection() {
-  // Timeline journey steps
-  const journeyTimeline = [
-    { label: 'Primary School Interest', desc: 'Early curiosity for computers' },
-    { label: 'Computer Science', desc: 'Pursuing tech over medicine' },
-    { label: 'Limited Resources', desc: 'Walking to internet cafés & volunteering' },
-    { label: 'Cybersecurity Focus', desc: 'Networking & security operations' },
-    { label: 'Certifications', desc: 'CompTIA Security+ & Cisco' },
-    { label: 'Practical Experience', desc: 'Hands-on projects & SOC training' },
-    { label: 'Mentorship', desc: 'Empowering community learners' },
-    { label: 'ApoxylTech Hub', desc: 'Founder & CEO startup vision' },
-  ];
-
   // Startup vision cards
   const visionCards = [
     {
@@ -102,40 +85,6 @@ export default function AboutSection() {
           <p className="text-xs sm:text-sm font-mono text-slate-300 max-w-3xl mx-auto leading-relaxed border-y border-slate-800/80 py-3">
             CompTIA Security+ Certified Cybersecurity Professional &bull; Computer Science &bull; Technology Entrepreneur &bull; Founder, ApoxylTech Innovation Hub
           </p>
-        </div>
-
-        {/* Visual Journey Timeline Bar */}
-        <div className="p-6 rounded-3xl bg-glass-card border border-slate-800/80 space-y-4 shadow-xl">
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold uppercase tracking-wider">
-            <Compass className="w-4 h-4 text-cyan-400" />
-            <span>My Technology Journey & Growth Steps</span>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 font-mono text-xs">
-            {journeyTimeline.map((step, idx) => (
-              <div
-                key={idx}
-                className="relative p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between space-y-2 group"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 text-[10px] font-bold flex items-center justify-center">
-                    {idx + 1}
-                  </span>
-                  {idx < journeyTimeline.length - 1 && (
-                    <ArrowRight className="w-3 h-3 text-slate-600 hidden lg:block group-hover:text-cyan-400 transition-colors" />
-                  )}
-                </div>
-                <div>
-                  <p className="font-bold text-white text-[11px] group-hover:text-cyan-300 transition-colors">
-                    {step.label}
-                  </p>
-                  <p className="text-[10px] text-slate-400 mt-1 leading-tight">
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* SECTION 1 — MY JOURNEY */}
