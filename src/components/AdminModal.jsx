@@ -27,6 +27,14 @@ export default function AdminModal({ isOpen, onClose, currentData, onSaveData })
     setEditableData(JSON.parse(JSON.stringify(currentData)));
   }, [currentData]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   // Handle Login Verification with rate limiting
@@ -164,26 +172,36 @@ export default function AdminModal({ isOpen, onClose, currentData, onSaveData })
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-xl animate-fadeIn">
-      <div className="relative w-full max-w-4xl rounded-3xl bg-slate-900 border border-cyan-500/40 shadow-2xl p-6 sm:p-8 overflow-y-auto max-h-[92vh] space-y-6">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="admin-modal-title"
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-xl animate-fadeIn"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-4xl rounded-3xl bg-slate-900 border border-cyan-500/40 shadow-2xl p-6 sm:p-8 overflow-y-auto max-h-[92vh] space-y-6"
+      >
         
         {/* Close Admin Portal */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors"
+          className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
           title="Close Admin Panel"
+          aria-label="Close Admin Panel"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Portal Header */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 flex-shrink-0">
             <Shield className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">SECURE ADMINISTRATIVE PORTAL</span>
-            <h2 className="text-2xl font-bold text-white">Umar Portfolio CMS</h2>
+            <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold">SECURE ADMINISTRATIVE PORTAL</span>
+            <h2 id="admin-modal-title" className="text-xl sm:text-2xl font-bold text-white">Umar Portfolio CMS</h2>
           </div>
         </div>
 

@@ -17,19 +17,10 @@ import SpaceExplorer from './components/SpaceExplorer';
 import { resumeData as initialData } from './data/resumeData';
 
 export default function App() {
-  const [currentData, setCurrentData] = useState(() => {
-    const saved = localStorage.getItem('umar_portfolio_data');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        return initialData;
-      }
-    }
-    return initialData;
-  });
+  const [currentData, setCurrentData] = useState(initialData);
 
-  const [showWelcomePage, setShowWelcomePage] = useState(true);
+  // Default to false so recruiters and hiring managers see portfolio content immediately
+  const [showWelcomePage, setShowWelcomePage] = useState(false);
   const [isSpaceOpen, setIsSpaceOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(() => {
@@ -55,6 +46,31 @@ export default function App() {
     return () => window.removeEventListener('hashchange', checkHash);
   }, []);
 
+  // Lock body scroll when full-screen immersive modes or admin modal are open
+  useEffect(() => {
+    if (isSpaceOpen || isAdminOpen || showWelcomePage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSpaceOpen, isAdminOpen, showWelcomePage]);
+
+  // Global Escape key handler for open full-screen overlays
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        if (showWelcomePage) setShowWelcomePage(false);
+        if (isSpaceOpen) setIsSpaceOpen(false);
+        if (isAdminOpen) handleCloseAdmin();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showWelcomePage, isSpaceOpen, isAdminOpen]);
+
   const handleSaveData = (newData) => {
     setCurrentData(newData);
     localStorage.setItem('umar_portfolio_data', JSON.stringify(newData));
@@ -68,15 +84,23 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#07090e] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
       
-      {/* Global Animated Blue Wireframe Technology Motion Background with Interactive Star Touch Bursts */}
+      {/* Accessibility: Skip to Main Content Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-cyan-500 focus:text-slate-950 focus:font-bold focus:font-mono focus:text-xs focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-cyan-300"
+      >
+        Skip to main content
+      </a>
+
+      {/* Global Animated Wireframe Technology Motion Background */}
       <WireframeBackground />
 
-      {/* Full-Screen Motion Gateway Welcome Page */}
+      {/* Optional Full-Screen Motion Gateway Welcome Page */}
       {showWelcomePage && (
         <WelcomePage onEnter={() => setShowWelcomePage(false)} />
       )}
 
-      {/* Realistic Deep Space Navigator */}
+      {/* 3D Deep Space Navigator Simulator */}
       <SpaceExplorer isOpen={isSpaceOpen} onClose={() => setIsSpaceOpen(false)} />
 
       <Navbar
@@ -87,7 +111,7 @@ export default function App() {
         onOpenSpace={() => setIsSpaceOpen(true)}
       />
 
-      <main className="relative z-10">
+      <main id="main-content" tabIndex={-1} className="relative z-10 focus:outline-none">
         <HeroSection data={currentData} />
         <AboutSection data={currentData} />
         <ExperienceSection data={currentData} />
@@ -100,8 +124,8 @@ export default function App() {
 
       <Footer data={currentData} />
 
-      {/* Floating Apoxyl AI Assistant — hidden when Space Explorer is active */}
-      {!isSpaceOpen && (
+      {/* Floating Apoxyl AI Assistant — hidden when Space Explorer or Welcome page is active */}
+      {!isSpaceOpen && !showWelcomePage && (
         <AiAssistant
           data={currentData}
           onSelectTheme={setCurrentTheme}

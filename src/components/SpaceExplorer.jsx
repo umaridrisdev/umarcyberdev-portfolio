@@ -244,6 +244,18 @@ export default function SpaceExplorer({ isOpen, onClose }) {
     warpTarget: null,
   });
 
+  // Handle Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   // Audio Sound Generator
   const playSoundEffect = useCallback((type) => {
     if (isMuted) return;
